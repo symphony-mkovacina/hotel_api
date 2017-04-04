@@ -53,3 +53,22 @@ def get_hotel_favorites(request):
     return Response(serializer.data)
 
 
+@api_view(['POST'])
+def add_to_favorites(request):
+    try:
+        hotel = Hotel.objects.get(pk=request.data.get('hotel_id'))
+        is_favorite = request.data.get('is_favorite') if request.data.get('is_favorite') else ''
+
+        if is_favorite.lower() == 'true':
+            hotel.user.add(request.user)
+            content = {'Message': 'Hotel added to favorites'}
+        else:
+            hotel.user.remove(request.user)
+            content = {'Message': 'Hotel removed from favorites'}
+
+        return Response(content, status=status.HTTP_200_OK)
+    except Exception as e:
+        content = {'Error': str(e)}
+        return Response(content, status=status.HTTP_404_NOT_FOUND)
+
+
