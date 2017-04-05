@@ -72,3 +72,22 @@ def add_to_favorites(request):
         return Response(content, status=status.HTTP_404_NOT_FOUND)
 
 
+@api_view()
+def increment_counter(request):
+    try:
+        counter, created = Counter.objects.get_or_create(name='test', defaults={'hit_count': 1})
+        is_even = counter.hit_count % 2 == 0
+
+        if not created:
+            counter.hit_count = F('hit_count') + 1
+            counter.save()
+
+        if not is_even:
+            raise Exception('Not even number!')
+
+        return Response({'Success': 'It is even number!'}, status=status.HTTP_200_OK)
+    except Exception as e:
+        content = {'Error': str(e)}
+        return Response(content, status=status.HTTP_404_NOT_FOUND)
+
+
