@@ -1,13 +1,15 @@
 from django.contrib.auth import get_user_model
-from rest_framework import viewsets
+from django.db.models import F
+from django.shortcuts import get_object_or_404
+from rest_framework import viewsets, status
 from rest_framework.decorators import api_view
 from rest_framework.generics import CreateAPIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import Hotel
-from .serializers import HotelSerializer, UserSerializer, ReviewSerializer
+from .models import Hotel, Counter
+from .serializers import HotelSerializer, UserSerializer, ReviewSerializer, FavoriteSerializer
 
 
 class HotelViewSet(viewsets.ModelViewSet):
@@ -35,7 +37,7 @@ class GetHotelReview(APIView):
     permission_classes = (IsAuthenticated,)
 
     def get(self, request, hotel_id):
-        hotel = Hotel.objects.get(pk=hotel_id)
+        hotel = get_object_or_404(Hotel, pk=hotel_id)
         reviews = hotel.review_set.all()
         serializer = ReviewSerializer(reviews, many=True)
         return Response(serializer.data)
@@ -45,7 +47,7 @@ class GetHotelReview(APIView):
 def get_hotel_favorites(request):
     """
     The api view that exposes favorite hotels for current user.
-    :param request: The get request containing the authorisation token.
+    :param request: The GET request containing the authorisation token.
     :return: The favorite hotels.
     """
     hotels = Hotel.objects.filter(user=request.user)
@@ -55,11 +57,17 @@ def get_hotel_favorites(request):
 
 @api_view(['POST'])
 def add_to_favorites(request):
+    """
+    Add/remove hotel from favorites.
+    :param request: The POST request containing hotel_id and is_favorite flag.
+    :return: 200 OK 0r 404 not found, depending on result.
+    """
     try:
-        hotel = Hotel.objects.get(pk=request.data.get('hotel_id'))
-        is_favorite = request.data.get('is_favorite') if request.data.get('is_favorite') else ''
+        serializer = FavoriteSerializer(request.data)
+        hotel = Hotel.objects.get(pk=serializer.data['hotel_id'])
+        is_favorite = serializer.data['is_favorite']
 
-        if is_favorite.lower() == 'true':
+        if is_favorite:
             hotel.user.add(request.user)
             content = {'Message': 'Hotel added to favorites'}
         else:
@@ -74,6 +82,11 @@ def add_to_favorites(request):
 
 @api_view()
 def increment_counter(request):
+    """
+    Hit counter. If count is even number, method returns 200 OK, otherwise handled 400 BAD REQUEST
+    :param request: The GET request object.
+    :return:  200 OK 0r 400 bad request, depending on count number.
+    """
     try:
         counter, created = Counter.objects.get_or_create(name='test', defaults={'hit_count': 1})
         is_even = counter.hit_count % 2 == 0
@@ -88,6 +101,4 @@ def increment_counter(request):
         return Response({'Success': 'It is even number!'}, status=status.HTTP_200_OK)
     except Exception as e:
         content = {'Error': str(e)}
-        return Response(content, status=status.HTTP_404_NOT_FOUND)
-
-
+        return Response(content, status=status.HTTP_400_BAD_REQUEST)
