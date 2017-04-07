@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
-from .models import Hotel, Review, Author
+from .models import Hotel, Review, Author, Favorite
 
 
 class HotelSerializer(serializers.ModelSerializer):
@@ -10,7 +10,7 @@ class HotelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Hotel
         fields = ['id', 'name', 'city', 'country', 'image', 'stars',
-                  'description', 'price', 'likes', 'dislikes']
+                  'description', 'price', 'likes', 'dislikes', 'user']
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -43,6 +43,13 @@ class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
         fields = ['id', 'message', 'created_at', 'likes', 'dislikes', 'positive', 'author']
+
+
+class FavoriteSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Favorite
+        fields = '__all__'
 
 
 
