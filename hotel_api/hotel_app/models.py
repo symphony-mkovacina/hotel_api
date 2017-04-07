@@ -44,11 +44,18 @@ class Review(models.Model):
         return self.author.first_name + ' ' + self.author.last_name + ' - ' + str(self.created_at.date())
 
 
+class Counter(models.Model):
+    name = models.CharField(max_length=20)
+    hit_count = models.IntegerField()
+
+
+class Favorite(models.Model):
+    hotel_id = models.IntegerField()
+    is_favorite = models.BooleanField()
+
+
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def create_auth_token(sender, instance=None, created=False, **kwargs):
     if created:
         Token.objects.create(user=instance)
-
-
-
 
