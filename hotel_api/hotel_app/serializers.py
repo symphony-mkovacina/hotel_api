@@ -10,7 +10,7 @@ class HotelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Hotel
         fields = ['id', 'name', 'city', 'country', 'image', 'stars',
-                  'description', 'price', 'likes', 'dislikes', 'user']
+                  'description', 'price', 'likes', 'dislikes', 'user', 'location']
 
 
 class UserSerializer(serializers.ModelSerializer):
