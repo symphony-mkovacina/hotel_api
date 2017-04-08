@@ -4,7 +4,8 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
-
+from django.db import models
+from location_field.models.plain import PlainLocationField
 
 class Hotel(models.Model):
     name = models.CharField(max_length=200)
@@ -18,6 +19,7 @@ class Hotel(models.Model):
     likes = models.IntegerField(default=0)
     dislikes = models.IntegerField(default=0)
     user = models.ManyToManyField(User)
+    location = PlainLocationField(based_fields=['city'], zoom=7)
 
     def __str__(self):
         return self.name + ', ' + self.city + ' - ' + self.country
