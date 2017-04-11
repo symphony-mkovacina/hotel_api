@@ -1,0 +1,410 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Hotel API",
+		"_postman_id": "a0fca199-4b8f-7ccf-9d14-3615b942c9b6",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost",
+			"description": "",
+			"item": [
+				{
+					"name": "http://127.0.0.1:8000/hotel_api/",
+					"request": {
+						"url": "http://127.0.0.1:8000/hotel_api/",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 85fc0105250ea4ecda170569748b3748321353da",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "Get all hotels"
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/hotel_api/get_hotel_reviews/2",
+					"request": {
+						"url": "http://127.0.0.1:8000/hotel_api/get_hotel_reviews/2",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 85fc0105250ea4ecda170569748b3748321353da",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "Get hotel reviews for specified hotel ID."
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api-token-auth/",
+					"request": {
+						"url": "http://127.0.0.1:8000/api-token-auth/",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "marko.kovacina",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "password",
+									"value": "12345678",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "Obtain token (login)."
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/favorites/add_remove",
+					"request": {
+						"url": "http://127.0.0.1:8000/favorites/add_remove",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 85fc0105250ea4ecda170569748b3748321353da",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "hotel_id",
+									"value": "2",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "is_favorite",
+									"value": "False",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "Add to/remove from favorites"
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/favorites",
+					"request": {
+						"url": "http://127.0.0.1:8000/favorites",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 85fc0105250ea4ecda170569748b3748321353da",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "Get favorites for current user."
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/increment_counter/",
+					"request": {
+						"url": "http://127.0.0.1:8000/increment_counter/",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 85fc0105250ea4ecda170569748b3748321353da",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "Hit counter for error handling."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "mkovacina.pythonanywhere.com",
+			"description": "Live version of hotel API on pythonanywhere site.",
+			"item": [
+				{
+					"name": "http://mkovacina.pythonanywhere.com/hotel_api/",
+					"request": {
+						"url": "http://mkovacina.pythonanywhere.com/hotel_api/",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token c031e75a8057288f949d634e3b304be2ad976adc",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "Get all hotels"
+					},
+					"response": []
+				},
+				{
+					"name": "http://mkovacina.pythonanywhere.com/hotel_api/1",
+					"request": {
+						"url": "http://mkovacina.pythonanywhere.com/hotel_api/1",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token c031e75a8057288f949d634e3b304be2ad976adc",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "Get hotel details."
+					},
+					"response": []
+				},
+				{
+					"name": "http://mkovacina.pythonanywhere.com/api-token-auth/",
+					"request": {
+						"url": "http://mkovacina.pythonanywhere.com/api-token-auth/",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "password",
+									"value": "admin123",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "Obtain token (login)"
+					},
+					"response": []
+				},
+				{
+					"name": "http://mkovacina.pythonanywhere.com/register/",
+					"request": {
+						"url": "http://mkovacina.pythonanywhere.com/register/",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "nikola.stojanovic",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "password",
+									"value": "P@ssw0rd",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "email",
+									"value": "nikola.stojanovic@symphony.is",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "first_name",
+									"value": "Nikola",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "last_name",
+									"value": "Stojanovic",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "Register new user"
+					},
+					"response": []
+				},
+				{
+					"name": "http://mkovacina.pythonanywhere.com/favorites/",
+					"request": {
+						"url": "http://mkovacina.pythonanywhere.com/favorites/",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token c031e75a8057288f949d634e3b304be2ad976adc",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "Favorites for current user."
+					},
+					"response": []
+				},
+				{
+					"name": "http://mkovacina.pythonanywhere.com/favorites/add_remove",
+					"request": {
+						"url": "http://mkovacina.pythonanywhere.com/favorites/add_remove",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token c031e75a8057288f949d634e3b304be2ad976adc",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "hotel_id",
+									"value": "3",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "is_favorite",
+									"value": "True",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "Add to/remove from favorites."
+					},
+					"response": []
+				},
+				{
+					"name": "http://mkovacina.pythonanywhere.com/hotel_api/get_hotel_reviews/1",
+					"request": {
+						"url": "http://mkovacina.pythonanywhere.com/hotel_api/get_hotel_reviews/1",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token c031e75a8057288f949d634e3b304be2ad976adc",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "Reviews for specified hotel."
+					},
+					"response": []
+				},
+				{
+					"name": "http://mkovacina.pythonanywhere.com/increment_counter",
+					"request": {
+						"url": "http://mkovacina.pythonanywhere.com/increment_counter",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token c031e75a8057288f949d634e3b304be2ad976adc",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "Hit counter for error handling."
+					},
+					"response": []
+				},
+				{
+					"name": "http://mkovacina.pythonanywhere.com/hotel_api/",
+					"request": {
+						"url": "http://mkovacina.pythonanywhere.com/hotel_api/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token c031e75a8057288f949d634e3b304be2ad976adc",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "stars",
+									"value": "4",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "country",
+									"value": "Serbia",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "city",
+									"value": "Belgrade",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "location",
+									"value": "1, 2",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "name",
+									"value": "Art Hotel",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "description",
+									"value": "Featuring an on-site restaurant and Situated on Belgrade's impressive pedestrian street and shopping zone, Art Hotel's décor is inspired by Italian style. The property offers individually designed, air-conditioned rooms and suites with minibar, free high-speed WiFi, free sauna and hairdryers.\n\nOffering views of the vibrant Knez Mihailova Street, the elegant Mosaic Restaurant & Bar serves a selection of quality wines and various specialities made from seasonal ingredients, a variety of coffees and homemade desserts, including ice cream and authentic Liège waffles.",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "price",
+									"value": "40.25",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "user",
+									"value": "3",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "Add new hotel"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
