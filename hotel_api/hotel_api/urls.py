@@ -6,7 +6,6 @@ from rest_framework import routers
 
 from hotel_app import views
 from hotel_app.views import HotelViewSet
-from rest_framework.authtoken import views as rest_framework_views
 
 router = routers.DefaultRouter()
 router.register(r'hotel_api', HotelViewSet)
@@ -19,7 +18,7 @@ urlpatterns = [
     url(r'^increment_counter/$', views.increment_counter, name='increment_counter'),
     url(r'^register/$', views.CreateUserView.as_view(), name='user'),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^api-token-auth/', rest_framework_views.obtain_auth_token),
+    url(r'^api-token-auth/', views.Login.as_view(), name='login'),
     url(r'^admin/', admin.site.urls),
 ]
 

@@ -1,5 +1,6 @@
 appdirs==1.4.3
 Django==1.10.6
+django-cors-headers==2.1.0
 django-filter==1.0.2
 django-location-field==2.0.3
 djangorestframework==3.6.2

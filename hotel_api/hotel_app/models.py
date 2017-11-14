@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.utils import timezone
 from location_field.models.plain import PlainLocationField
 from rest_framework.authtoken.models import Token
 
@@ -15,7 +16,7 @@ class Hotel(models.Model):
     stars = models.IntegerField()
     description = models.TextField(max_length=2000)
     price = models.FloatField()
-    date = models.DateTimeField(auto_now=True)
+    date = models.DateTimeField(default=timezone.now)
     likes = models.IntegerField(default=0)
     dislikes = models.IntegerField(default=0)
     user = models.ManyToManyField(User)

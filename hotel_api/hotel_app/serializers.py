@@ -6,10 +6,15 @@ from .models import Hotel, Review, Author, Favorite
 
 class HotelSerializer(serializers.ModelSerializer):
     image = serializers.ImageField(max_length=None, use_url=True, required=False)
+    date = serializers.SerializerMethodField(read_only=True)
+
+    @staticmethod
+    def get_date(obj):
+        return obj.date.strftime("%Y-%m-%d %H:%M:%S")
 
     class Meta:
         model = Hotel
-        fields = ['id', 'name', 'city', 'country', 'image', 'stars',
+        fields = ['id', 'name', 'city', 'country', 'image', 'stars', 'date',
                   'description', 'price', 'likes', 'dislikes', 'user', 'location']
 
 
@@ -53,9 +58,3 @@ class FavoriteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Favorite
         fields = '__all__'
-
-
-
-
-
-
