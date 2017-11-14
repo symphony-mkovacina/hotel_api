@@ -1,16 +1,16 @@
 # hotel_api
-Hotel API project
+Hotel API project setup
 
-- sudo easy_install django or pip install django 	    => instaliranje Django
-- django-admin —-version or pip show django 		    => provjeriti verziju Djanga
-- which django-admin 					                => putanja do Djanga
-- django-admin startproject <project_name> 		        => kreiranje novog Django projekta
-- virtualenv -p <path_to_python> --distribute venv 	    => kreiranje virtualnog okruzenja
-- . venv/bin/activate/					                => aktivacija virtuelnog okruzenja
-- python manage.py startapp <section_name>		        => dodavanje app-a odnosno novog modula u projekat (Django aplikacije su modularne)			
-- python manage.py makemigrations <app_name>		    => kreiranje migracija
-- python manage.py sqlmigrate <app_name> <version>	    => kreiranje SQL skripte za sinkovanje na bazi (ukoliko zelis da je direktno pastis na bazi)
-- python manage.py migrate				                => apliciranje migracija
-- python manage.py shell				                => komanda da odjes u database shell od Djanga i da pristupas objektima kao kada radis u kodu
-- python manage.py createsuperuser			            => kreiranje superuser-a tj admin-a sa kojim se logujemo na admin panel
-- python manage.py runserver				            => startovanje aplikacije preko Django dev servera
+- sudo easy_install django or pip install django 	      => install Django
+- django-admin —-version or pip show django 		        => check Django version
+- which django-admin 					                          => path to Django
+- django-admin startproject <project_name> 		          => create new Django project
+- virtualenv -p <path_to_python> --distribute venv 	    => create virtual environment
+- . venv/bin/activate/					                        => activate virtual environment
+- python manage.py startapp <section_name>		          => add new app
+- python manage.py makemigrations <app_name>		        => create migrations
+- python manage.py sqlmigrate <app_name> <version>	    => create SQL scripts
+- python manage.py migrate				                      => apply migrations
+- python manage.py shell				                        => enter Django database shell
+- python manage.py createsuperuser			                => create superuser to login on Django admin panel
+- python manage.py runserver				                    => run Django development server
