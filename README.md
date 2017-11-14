@@ -1,7 +1,7 @@
 # hotel_api
 Useful Django commands
 
-* sudo easy_install django or pip install django 	      => __install Django__
+* sudo easy_install django or pip install django 	      > install Django
 * django-admin —-version or pip show django 		        => check Django version
 * which django-admin 					                          => path to Django
 * django-admin startproject <project_name> 		          => create new Django project
